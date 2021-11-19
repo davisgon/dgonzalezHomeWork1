@@ -25,10 +25,11 @@ console.log(" for (var i = 0; i < 5; i++) { setTimeout(function () { console.log
 
 console.log("");
 console.log("can use  a closure around setTimeout");
-//can use  a closure around setTimeout
  
-for (let i = 0; i < 5; i++) {
-    (function (i) {
+//can use  a closure around setTimeout
+
+for (var i = 0; i < 5; i++) {
+    ((i) => {
         setTimeout(function () { console.log(i); }, 100);
     })(i);
 }
