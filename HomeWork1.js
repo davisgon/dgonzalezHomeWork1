@@ -6,10 +6,9 @@ const sumF = (p1, p2) => {
         return p1 + p2;
     } else {
         console.log('  caso 1, sum(2)(3)');
-        return function (p2) { return p1 + p2; };
+        return (p2) => { return p1 + p2; };
     }
 }
-
 
 console.log(sumF(2)(3));
 console.log(sumF(2, 3));
@@ -17,18 +16,24 @@ console.log('  ');
 //'3.- ***************************    setTimeout'
 console.log('3.- ***************************    setTimeout')
 
-console.log(" for (var i = 0; i < 5; i++) { setTimeOut(function () { console.log(i); }, `100);")
-console.log("Unexpected end of input      and       setTimeOut is not defined")
+console.log(" for (var i = 0; i < 5; i++) { setTimeout(function () { console.log(i); }, 100);")
+/* for (var i = 0; i < 5; i++){
+    setTimeout(function(){
+        console.log(i);
+    },100);
+   } */
 
 console.log("");
-console.log("Correct");
-for (var i = 0; i < 5; i++) {
-
-    console.log(`${i} `);
-    setTimeout(function () {
-
-    }, 100);
+console.log("can use  a closure around setTimeout");
+//can use  a closure around setTimeout
+ 
+for (let i = 0; i < 5; i++) {
+    (function (i) {
+        setTimeout(function () { console.log(i); }, 100);
+    })(i);
 }
+
+
 console.log('ES5')
 for (var i = 0; i < 5; i++) {
     console.log(i);
@@ -50,3 +55,7 @@ const myArray = [0, 3, 2, 2, 5, 7, 7, 1, 1];
 const myArray2 = [1, [2, 3], [4, 5]];
 console.log(myArray2);
 console.log(myArray2.flat());
+
+
+
+   
